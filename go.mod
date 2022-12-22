@@ -1,4 +1,4 @@
-module github.com/LinkedInLearning/hands-on-go-3080775
+module github.com/jgwhite/hands-on-go
 
 go 1.18
 
