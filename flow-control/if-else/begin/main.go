@@ -1,4 +1,4 @@
-// flow-contorl/if-else/begin/main.go
+// flow-control/if-else/begin/main.go
 package main
 
 import (
