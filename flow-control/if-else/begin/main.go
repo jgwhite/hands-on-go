@@ -1,4 +1,4 @@
-// flow-contorl/if-else/begin/main.go
+// flow-control/if-else/begin/main.go
 package main
 
 import (
@@ -6,11 +6,19 @@ import (
 )
 
 // parseOddsEvens returns two slices, one with the odd numbers and one with the even numbers
-func parseOddsEvens(ints []int) (odds []int, evens []int) {
-	// use a for-range loop to iterate over the incoming slice
+func parseOddsEvens(ints []int) ([]int, []int) {
+	var odds []int
+	var evens []int
 
-	// use the modulo operator to check if the number is odd or even and add it to the appropriate slice
-	return
+	for _, i := range ints {
+		if i%2 == 0 {
+			evens = append(evens, i)
+		} else {
+			odds = append(odds, i)
+		}
+	}
+
+	return odds, evens
 }
 
 func main() {
