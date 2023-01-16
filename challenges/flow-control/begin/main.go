@@ -51,12 +51,10 @@ func main() {
 		for _, r := range w {
 			if unicode.IsLetter(r) {
 				c["letters"] += 1
-			}
-			if unicode.IsSymbol(r) {
-				c["symbols"] += 1
-			}
-			if unicode.IsDigit(r) {
+			} else if unicode.IsNumber(r) {
 				c["numbers"] += 1
+			} else {
+				c["symbols"] += 1
 			}
 		}
 	}
