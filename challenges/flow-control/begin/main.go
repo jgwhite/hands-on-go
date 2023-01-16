@@ -41,7 +41,7 @@ func main() {
 	}
 
 	// use the standard library utility package that can help us split the string into words
-	w := strings.Split(s, " ")
+	w := strings.Fields(s)
 
 	// capture the length of the words slice
 	c["words"] = len(w)
