@@ -23,13 +23,13 @@ func main() {
 		panic("No file provided")
 	}
 	fn := os.Args[1]
-	b, err := os.ReadFile(fn)
+	bs, err := os.ReadFile(fn)
 	if err != nil {
 		panic(fmt.Sprintf("Could not read file: %s", fn))
 	}
 
 	// convert the bytes to a string
-	s := string(b)
+	s := string(bs)
 	fmt.Println(s)
 
 	// initialize a map to store the counts
