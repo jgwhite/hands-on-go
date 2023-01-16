@@ -1,8 +1,11 @@
 // interfaces/type-assertions/begin/main.go
 package main
 
-func main() {
-	// perform a type assertion
+import "fmt"
 
-	// perform a type assertion and handle the error
+func main() {
+	var i any = "hello"
+	if _, ok := i.(int); !ok {
+		fmt.Printf("%v is not an int\n", i)
+	}
 }
