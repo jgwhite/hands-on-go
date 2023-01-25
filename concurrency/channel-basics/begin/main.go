@@ -6,7 +6,7 @@ import (
 )
 
 // sum calculates and prints the sum of numbers
-func sum(nums []int, ch chan int) {
+func sum(nums []int, ch chan<- int) {
 	sum := 0
 	for _, v := range nums {
 		sum += v
@@ -21,4 +21,12 @@ func main() {
 	go sum(nums, ch)
 
 	fmt.Printf("Result: %d\n", <-ch)
+
+	ch2 := make(chan string)
+
+	ch2 <- "James"
+	ch2 <- "Toni"
+
+	fmt.Println(<-ch2)
+	fmt.Println(<-ch2)
 }
