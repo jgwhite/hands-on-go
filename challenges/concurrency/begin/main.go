@@ -6,6 +6,7 @@ import (
 	"math/rand"
 	"os"
 	"strings"
+	"sync"
 	"time"
 	"unicode"
 
@@ -80,14 +81,25 @@ func (s symbolCounter) count(input string) int {
 func doAnalysis(data string, counters ...counter) map[string]int {
 	// initialize a map to store the counts
 	analysis := make(map[string]int)
+	var analysisMu sync.Mutex
+	var wg sync.WaitGroup
+
+	wg.Add(len(counters))
 
 	// capture the length of the words in the data
 	analysis["words"] = len(strings.Fields(data))
 
 	// loop over the counters and use their name as the key
 	for _, c := range counters {
-		analysis[c.name()] = c.count(data)
+		go func(c counter) {
+			defer wg.Done()
+			analysisMu.Lock()
+			defer analysisMu.Unlock()
+			analysis[c.name()] = c.count(data)
+		}(c)
 	}
+
+	wg.Wait()
 
 	// return the map
 	return analysis
